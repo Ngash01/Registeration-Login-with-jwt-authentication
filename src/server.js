@@ -4,6 +4,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 import userRoutes from "./routes/UserRoutes.js";
 import cookieParser from "cookie-parser"; 
+import 'dotenv/config';
+
 
 const app = express();
 
@@ -20,7 +22,7 @@ app.use('/user',userRoutes )
 
 
 
-mongoose.connect("mongodb+srv://kimaniamos82:nganga2001@cluster0.1wwhz68.mongodb.net/?retryWrites=true&w=majority")
+mongoose.connect(process.env.MONGO_DB_URL)
 .then(()=>{
   console.log("connection with db established successfully!");
   app.listen(5000, console.log("server running on port: https://localhost:5000"))
